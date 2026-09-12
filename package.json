@@ -13,6 +13,7 @@
     "test:watch": "vitest",
     "agent:demo": "tsx src/agent/dev/dev-run.ts",
     "agent:llm-check": "tsx src/agent/dev/live-llm-check.ts",
+    "agent:live": "tsx src/agent/dev/live-run.ts",
     "server:dev": "tsx src/server/dev-server.ts"
   },
   "repository": {
