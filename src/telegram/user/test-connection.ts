@@ -1,8 +1,11 @@
 import input from "input";
 import { GramJsClient } from "./gramjs.client";
+import { loadSession, saveSession } from "./session";
 
 async function main() {
-  const gramJs = new GramJsClient();
+  const savedSession = loadSession();
+
+  const gramJs = new GramJsClient(savedSession);
   const client = gramJs.getClient();
 
   await client.start({
@@ -18,12 +21,17 @@ async function main() {
       return input.text("Telegram login code: ");
     },
 
-    onError: (error: Error) => {
+    onError: (error) => {
       console.error("Telegram authentication error:", error);
     },
   });
 
+  const session = gramJs.getSession();
+
+  saveSession(session);
+
   console.log("Telegram connected successfully.");
+  console.log("Session saved successfully.");
 
   await client.disconnect();
 }

@@ -3,13 +3,14 @@ import { StringSession } from "telegram/sessions";
 import { config } from "../../config";
 
 export class GramJsClient {
+  private readonly session: StringSession;
   private readonly client: TelegramClient;
 
-  constructor() {
-    const session = new StringSession(config.telegram.session);
+  constructor(sessionString = "") {
+    this.session = new StringSession(sessionString);
 
     this.client = new TelegramClient(
-      session,
+      this.session,
       config.telegram.apiId,
       config.telegram.apiHash,
       {
@@ -18,7 +19,19 @@ export class GramJsClient {
     );
   }
 
+  async connect(): Promise<void> {
+    await this.client.connect();
+  }
+
+  async disconnect(): Promise<void> {
+    await this.client.disconnect();
+  }
+
   getClient(): TelegramClient {
     return this.client;
+  }
+
+  getSession(): string {
+    return this.session.save();
   }
 }

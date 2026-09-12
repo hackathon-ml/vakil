@@ -22,3 +22,5 @@ temp/
 *.sublime-workspace
 .env
 .env.*
+.telegram-session
+.env.production
