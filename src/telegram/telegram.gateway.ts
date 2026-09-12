@@ -1,11 +1,6 @@
 import { GramJsClient } from "./user/gramjs.client";
-
-export interface TelegramMessage {
-  id: number;
-  text: string;
-  chatId?: string;
-  timestamp: Date;
-}
+import { registerTelegramMessageListener } from "./events/telegram.events";
+import type { TelegramMessage } from "../shared/telegram.types";
 
 export interface TelegramDialog {
   id: string;
@@ -39,7 +34,14 @@ export class TelegramGateway {
         text: message.message ?? "",
         chatId: message.peerId ? String(message.peerId) : undefined,
         timestamp: message.date ? new Date(message.date * 1000) : new Date(),
+        outgoing: false,
       }));
+  }
+
+  async resolveChat(chat: string | number) {
+    const client = this.gramJs.getClient();
+
+    return client.getEntity(chat);
   }
 
   async disconnect(): Promise<void> {
@@ -91,7 +93,9 @@ export class TelegramGateway {
   ): Promise<TelegramMessage> {
     const client = this.gramJs.getClient();
 
-    const sentMessage = await client.sendMessage(chat, {
+    const entity = await this.resolveChat(chat);
+
+    const sentMessage = await client.sendMessage(entity, {
       message,
     });
 
@@ -102,6 +106,10 @@ export class TelegramGateway {
       timestamp: sentMessage.date
         ? new Date(sentMessage.date * 1000)
         : new Date(),
+      outgoing: true,
     };
+  }
+  onMessage(handler: (message: TelegramMessage) => Promise<void>): void {
+    registerTelegramMessageListener(this.gramJs.getClient(), handler);
   }
 }
