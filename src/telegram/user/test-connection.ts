@@ -1,5 +1,5 @@
 import input from "input";
-import { GramJsClient } from "../../../gramjs.client";
+import { GramJsClient } from "./gramjs.client";
 
 async function main() {
   const gramJs = new GramJsClient();
