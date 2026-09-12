@@ -24,3 +24,6 @@ temp/
 .env.*
 .telegram-session
 .env.production
+
+# BOB — generated case artifacts, never committed (real user data)
+dossiers/

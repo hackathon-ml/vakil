@@ -8,7 +8,13 @@
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "agent:demo": "tsx src/agent/dev/dev-run.ts",
+    "agent:llm-check": "tsx src/agent/dev/live-llm-check.ts",
+    "agent:live": "tsx src/agent/dev/live-run.ts",
+    "server:dev": "tsx src/server/dev-server.ts"
   },
   "repository": {
     "type": "git",
@@ -23,16 +29,22 @@
   "homepage": "https://github.com/hackathon-ml/vakil#readme",
   "description": "",
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "docx": "^9.1.0",
     "dotenv": "^17.4.2",
     "input": "^1.0.1",
+    "openai": "^4.77.0",
     "pg": "^8.23.0",
     "reflect-metadata": "^0.2.2",
     "telegram": "^2.26.22",
-    "typeorm": "^1.1.1"
+    "typeorm": "^1.1.1",
+    "zod": "^3.24.1",
+    "zod-to-json-schema": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^22.20.2",
     "tsx": "^4.23.13",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vitest": "^2.1.8"
   }
 }
