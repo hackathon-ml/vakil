@@ -1,0 +1,11 @@
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  background: var(--tg-theme-secondary-bg-color, var(--tgui--secondary_bg_color));
+}
+
+body {
+  font-family: var(--tgui--font-family, system-ui, sans-serif);
+}

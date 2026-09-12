@@ -1,0 +1,109 @@
+.app-shell {
+  min-height: 100%;
+  background: var(--tg-theme-secondary-bg-color, var(--tgui--secondary_bg_color));
+  color: var(--tg-theme-text-color, var(--tgui--text_color));
+}
+
+.app-shell--tabs {
+  padding-bottom: 96px;
+}
+
+.app-browser-back {
+  padding: 8px 8px 0;
+}
+
+.app-page {
+  padding-bottom: 16px;
+}
+
+.app-page-action {
+  padding: 16px;
+}
+
+.app-tabs {
+  padding: 8px 16px 0;
+}
+
+.app-centered {
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+.app-inline-error {
+  margin: 0;
+  padding: 0 16px 8px;
+  color: var(--tg-theme-destructive-text-color, var(--tgui--destructive_text_color));
+}
+
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 96px);
+}
+
+.chat-thread {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 12px 12px;
+}
+
+.chat-row {
+  display: flex;
+}
+
+.chat-row--user {
+  justify-content: flex-end;
+}
+
+.chat-row--agent {
+  justify-content: flex-start;
+}
+
+.chat-bubble {
+  max-width: 82%;
+  padding: 10px 12px;
+  border-radius: 16px;
+}
+
+.chat-bubble--user {
+  background: var(--tg-theme-button-color, var(--tgui--button_color));
+  color: var(--tg-theme-button-text-color, var(--tgui--button_text_color));
+}
+
+.chat-bubble--user * {
+  color: inherit;
+}
+
+.chat-bubble--agent {
+  background: var(--tg-theme-section-bg-color, var(--tgui--section_bg_color));
+  color: var(--tg-theme-text-color, var(--tgui--text_color));
+}
+
+.chat-time {
+  display: block;
+  margin-top: 4px;
+  opacity: 0.72;
+}
+
+.chat-composer {
+  position: sticky;
+  bottom: 0;
+  padding: 8px 12px 12px;
+  background: var(--tg-theme-secondary-bg-color, var(--tgui--secondary_bg_color));
+}
+
+.ticket-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 12px 16px;
+}
+
+.ticket-feedback {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px 16px;
+}
